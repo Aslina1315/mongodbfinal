@@ -1,325 +1,77 @@
-# MongoDB
+# Exp 7 CRUD Operations on Products Collection using MongoDB
 
-## Aim
+**Date:**
 
-To perform complete CRUD (Create, Read, Update, Delete) operations and advanced MongoDB queries on a Products collection, including conditional filtering, array-based searches, logical operators, regular expressions, sorting, skipping, and aggregation functions to manage and analyze product data effectively.
+## AIM:
 
-## Algorithm
-1. CREATE Operation
+To implement **CRUD (Create, Read, Update, and Delete) Operations using MongoDB** on a Products collection to store, retrieve, modify, and delete product information.
 
-Start MongoDB and select the database.
+## DESIGN STEPS:
 
-Create a collection named products.
+### Step 1:
 
-Insert multiple product documents using insertMany().
+Fork the given repository and clone the forked repository from GitHub.
 
-Insert an additional product using insertOne().
+### Step 2:
 
-2. READ Operation
+Open **MongoDB Shell (mongosh)** or MongoDB Compass and create a database for storing product information.
 
-Display all documents using find().pretty().
+### Step 3:
 
-Filter documents based on:
+Create a collection named **Products** with the fields **id, name, brand, price, category, stock,** and **tags**.
 
-Price conditions ($lt, $gt)
+### Step 4:
 
-Category not equal ($ne)
+Insert the following product records into the Products collection.
 
-Logical conditions using $and and $or
+| id | name       | brand    | price | category    | stock | tags                       |
+| -- | ---------- | -------- | ----: | ----------- | ----: | -------------------------- |
+| 1  | Laptop     | Dell     | 55000 | Electronics |    30 | ["computer", "technology"] |
+| 2  | Smartphone | Samsung  | 30000 | Electronics |    50 | ["mobile", "android"]      |
+| 3  | Headphones | Sony     |  2500 | Accessories |   100 | ["audio", "music"]         |
+| 4  | Smartwatch | Apple    | 45000 | Electronics |    20 | ["wearable", "ios"]        |
+| 5  | Keyboard   | Logitech |  1200 | Accessories |    80 | ["computer", "typing"]     |
 
-Search documents by tags using array operators:
+### Step 5:
 
-$in (match any tag)
+Perform the **Create operation** by inserting all the given product documents into the Products collection.
 
-$all (must contain all tags)
+### Step 6:
 
-$size (exact array length)
+Perform the **Read operation** to display all the documents available in the Products collection.
 
-Use REGEX to filter names starting with a specific letter.
+### Step 7:
 
-Sort documents using sort().
+Retrieve products based on conditions such as **product ID, category, price, brand, stock,** and **tags**.
 
-Skip documents using skip().
+### Step 8:
 
-3. UPDATE Operation
+Perform the **Update operation** to modify selected product information such as **price, stock,** or **tags**.
 
-Update fields using $set (e.g., update price).
+### Step 9:
 
-Increment numeric values using $inc (e.g., increase stock).
+Perform an update operation on multiple documents belonging to a particular product category.
 
-Modify array fields:
+### Step 10:
 
-$push to add a tag
+Perform the **Delete operation** to remove a selected product document from the Products collection.
 
-$pull to remove a tag
+### Step 11:
 
-4. DELETE Operation
+Display the final Products collection and verify the changes made through the CRUD operations.
 
-Remove a specific product using deleteOne().
+### Step 12:
 
-5. AGGREGATION Operations
+Execute all the MongoDB commands, capture the required outputs, commit the completed experiment, and push the changes to the forked GitHub repository.
 
-Use $group to calculate:
+## PROGRAM:
 
-Total stock across all products
+*(Paste the MongoDB commands for performing Create, Read, Update, and Delete operations on the Products collection here.)*
 
+## OUTPUT:
 
-```MongoDB
-db.products.insertMany([
-  {
-    _id: 1,
-    name: "Laptop",
-    brand: "Dell",
-    price: 55000,
-    category: "Electronics",
-    stock: 30,
-    tags: ["computer", "technology"]
-  },
-  {
-    _id: 2,
-    name: "Smartphone",
-    brand: "Samsung",
-    price: 30000,
-    category: "Electronics",
-    stock: 50,
-    tags: ["mobile", "android"]
-  },
-  {
-    _id: 3,
-    name: "Headphones",
-    brand: "Sony",
-    price: 2500,
-    category: "Accessories",
-    stock: 100,
-    tags: ["audio", "music"]
-  },
-  {
-    _id: 4,
-    name: "Smartwatch",
-    brand: "Apple",
-    price: 45000,
-    category: "Electronics",
-    stock: 20,
-    tags: ["wearable", "ios"]
-  },
-  {
-    _id: 5,
-    name: "Keyboard",
-    brand: "Logitech",
-    price: 1200,
-    category: "Accessories",
-    stock: 80,
-    tags: ["computer", "typing"]
-  }
-])
+*(Paste the execution output showing product insertion, retrieval of documents, updated product information, deletion of a product, and the final Products collection here.)*
 
-mydb> db.products.insertOne({
-...   _id: 6,
-...   name: "Tablet",
-...   brand: "Lenovo",
-...   price: 20000,
-...   category: "Electronics",
-...   stock: 40,
-...   tags: ["mobile", "touch"]
-... })
-{ acknowledged: true, insertedId: 6 }
+## RESULT:
 
-mydb> db.products.find().pretty()
-
-mydb> db.products.find({ price: { $lt: 5000 } })
-[
-  {
-    _id: 3,
-    name: 'Headphones',
-    brand: 'Sony',
-    price: 2500,
-    category: 'Accessories',
-    stock: 100,
-    tags: [ 'audio', 'music' ]
-  },
-  {
-    _id: 5,
-    name: 'Keyboard',
-    brand: 'Logitech',
-    price: 1200,
-    category: 'Accessories',
-    stock: 80,
-    tags: [ 'computer', 'typing' ]
-  }
-]
-
-mydb> db.products.find({ price: { $gt: 10000 } })
-[
-  {
-    _id: 1,
-    name: 'Laptop',
-    brand: 'Dell',
-    price: 55000,
-    category: 'Electronics',
-    stock: 30,
-    tags: [ 'computer', 'technology' ]
-  },
-  {
-    _id: 2,
-    name: 'Smartphone',
-    brand: 'Samsung',
-    price: 30000,
-    category: 'Electronics',
-    stock: 50,
-    tags: [ 'mobile', 'android' ]
-  },
-  {
-    _id: 4,
-    name: 'Smartwatch',
-    brand: 'Apple',
-    price: 45000,
-    category: 'Electronics',
-    stock: 20,
-    tags: [ 'wearable', 'ios' ]
-  },
-  {
-    _id: 6,
-    name: 'Tablet',
-    brand: 'Lenovo',
-    price: 20000,
-    category: 'Electronics',
-    stock: 40,
-    tags: [ 'mobile', 'touch' ]
-  }
-]
-
-mydb> db.products.find({ category: { $ne: "Electronics" } })
-[
-  {
-    _id: 3,
-    name: 'Headphones',
-    brand: 'Sony',
-    price: 2500,
-    category: 'Accessories',
-    stock: 100,
-    tags: [ 'audio', 'music' ]
-  },
-  {
-    _id: 5,
-    name: 'Keyboard',
-    brand: 'Logitech',
-    price: 1200,
-    category: 'Accessories',
-    stock: 80,
-    tags: [ 'computer', 'typing' ]
-  }
-]
-
-mydb> db.products.find({
-...   $and: [
-...     { category: "Electronics" },
-...     { price: { $lt: 50000 } }
-...   ]
-... })
-[
-  {
-    _id: 2,
-    name: 'Smartphone',
-    brand: 'Samsung',
-    price: 30000,
-    category: 'Electronics',
-    stock: 50,
-    tags: [ 'mobile', 'android' ]
-  },
-  {
-    _id: 4,
-    name: 'Smartwatch',
-    brand: 'Apple',
-    price: 45000,
-    category: 'Electronics',
-    stock: 20,
-    tags: [ 'wearable', 'ios' ]
-  },
-  {
-    _id: 6,
-    name: 'Tablet',
-    brand: 'Lenovo',
-    price: 20000,
-    category: 'Electronics',
-    stock: 40,
-    tags: [ 'mobile', 'touch' ]
-  }
-]
-Accessories OR price > 40000
-
-db.products.find({
-  $or: [
-    { category: "Accessories" },
-    { price: { $gt: 40000 } }
-  ]
-})
-
-
-db.products.find({
-  tags: { $in: ["computer", "mobile"] }
-})
-
-$all
-Tags must contain BOTH "audio" AND "music"
-
-db.products.find({ tags: { $all: ["audio", "music"] } })
-
-$size
-Tags array size = 2
-db.products.find({ tags: { $size: 2 } })
-
-$set – Update price
-db.products.updateOne(
-  { name: "Laptop" },
-  { $set: { price: 52000 } }
-)
-
-$inc – Increase stock
-
-mydb> db.products.updateOne(
-... { name : "Keyboard"},
-... {
-... $inc: {stock : 10}} )
-
-$push – Add tag
-mydb> db.products.updateOne (
-... { name: "Smartwatch"},
-... {$push : {tags : "premium"}})
-
-$pull – Remove tag
-mydb> db.products.updateOne(
-... { name:"Headphones"},
-... {$pull:{tags:"music"}}
-... )
-
-Delete
-mydb> db.products.deleteOne({name:"Keyboard"})
-
-mydb> db.products.find().sort({price:-1})
-
-Skip 2 products
-db.products.find().skip(2)
-REGEX
-Names starting with "S"
-mydb> db.products.find({name: /^S/ })
-
-AGGREGATION
-Total stock
-db.products.aggregate([
-  { $group: { _id: null, totalStock: { $sum: "$stock" } } }
-])
-
-
-
-
-Count of products per category
-db.products.aggregate([
-  { $group: { _id: "$category", count: { $sum: 1 } } }
-
-```
-])
-
-
-Count of products in each category
-
-Display the results using aggregate().
+The **CRUD Operations on the Products Collection using MongoDB** were implemented successfully. The product documents were created, retrieved, updated, and deleted using appropriate MongoDB commands, and the final changes were successfully verified in the Products collection.
