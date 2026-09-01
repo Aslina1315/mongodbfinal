@@ -172,14 +172,22 @@ After read operation
 To read products below 5000
 <img width="839" height="483" alt="image" src="https://github.com/user-attachments/assets/a54bbf02-0905-49a7-9fb9-91f93273d4cf" />
 
+
+
 To read only accessories
 <img width="840" height="485" alt="image" src="https://github.com/user-attachments/assets/20a869fc-d2e2-406a-9b8d-5b2895b70d3a" />
+
+
 
 To read electronics below 50,000
 <img width="828" height="466" alt="image" src="https://github.com/user-attachments/assets/e4bc4297-4125-48db-bc65-c61b96525c5c" />
 
+
+
 After updating the product collections
 <img width="630" height="800" alt="image" src="https://github.com/user-attachments/assets/934a13d5-169b-49f5-8cd1-51371a09e7e0" />
+
+
 
 After delete operation in product collection
 <img width="633" height="648" alt="image" src="https://github.com/user-attachments/assets/6dd29b20-4363-4494-a910-3b921b5b46b4" />
